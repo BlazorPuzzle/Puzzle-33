@@ -1,0 +1,14 @@
+﻿<input value="@TextValue" @onchange="OnValueChanged" />
+
+@code {
+    [Parameter] public string TextValue { get; set; } = string.Empty;
+    [Parameter] public EventCallback<string> TextValueChanged { get; set; }
+
+    protected async Task OnValueChanged(ChangeEventArgs? val)
+    {
+        if (val == null || val.Value == null) return;
+        
+        string stringValue = ((string)val.Value) ?? string.Empty;
+        await TextValueChanged.InvokeAsync(stringValue);
+    }
+}

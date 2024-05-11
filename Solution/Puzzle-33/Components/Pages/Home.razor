@@ -1,0 +1,27 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<p>
+    This is a Global Server Blazor Web App.
+    We have defined a component with a text parameter called TextValue.
+    The component hosts an input text box that changes the value of the
+    TextValue string.
+</p>
+
+<p>
+    We expected that the value of the TextValue string would be updated
+    in the page that hosts the component whenver the user changes the
+    value of the input text box, but it doesn't.
+</p>
+
+<h3>
+    @Text
+</h3>
+
+<MyComponent @bind-TextValue="@Text" />
+
+@code {
+
+    string Text = "My Text Value";
+}
